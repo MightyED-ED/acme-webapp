@@ -18,3 +18,8 @@
         name: docker
         state: started
         enabled: yes
+    
+    - name: Create a test file
+      copy:
+        content: "Hello from Ansible!\n"
+        dest: /home/mightyed/ansible_test.txt
