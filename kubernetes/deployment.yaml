@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acme-webapp
+  labels:
+    app: acme-webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: acme-webapp
+  template:
+    metadata:
+      labels:
+        app: acme-webapp
+    spec:
+      containers:
+      - name: acme-webapp
+        image: acme-webapp:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: acme-secret
+              key: database_url
