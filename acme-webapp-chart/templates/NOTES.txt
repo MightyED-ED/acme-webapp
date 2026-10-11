@@ -1,0 +1,7 @@
+Thanks for installing {{ .Chart.Name }}!
+
+To test the app, run:
+
+  kubectl port-forward svc/{{ .Release.Name }}-webapp 8080:{{ .Values.service.port }}
+
+Then open: http://localhost:8080/

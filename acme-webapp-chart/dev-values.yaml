@@ -1,0 +1,10 @@
+replicaCount: 1
+image:
+  repository: acme-webapp
+  tag: dev
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5000
+databaseUrl: "postgresql://postgres:devpass@db:5432/acmedev"
